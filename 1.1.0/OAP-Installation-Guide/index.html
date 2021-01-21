@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>OAP Installation Guide - OAP Project</title>
+    <title>OAP Installation Guide - SQL DS Cache</title>
     <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
@@ -33,11 +33,14 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "OAP Installation Guide", url: "#oap-installation-guide", children: [
-              {title: "Contents", url: "#contents" },
-              {title: "Prerequisites", url: "#prerequisites" },
-              {title: "Installing OAP", url: "#installing-oap" },
-              {title: "Configuration", url: "#configuration" },
+          {title: "Contents", url: "#contents", children: [
+          ]},
+          {title: "Prerequisites", url: "#prerequisites", children: [
+          ]},
+          {title: "Installing OAP", url: "#installing-oap", children: [
+              {title: "Extra Steps for PMem Shuffle", url: "#extra-steps-for-pmem-shuffle" },
+          ]},
+          {title: "Configuration", url: "#configuration", children: [
           ]},
         ];
 
@@ -49,7 +52,7 @@
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-125166209-1', 'oap-project.github.io');
+        ga('create', 'UA-125166209-1', 'oap-project.github.io/sql-ds-cache');
         ga('send', 'pageview');
     </script> 
 </head>
@@ -65,8 +68,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
     <h1><strong>OAP Installation Guide</strong></h1>
     <hr>
-    <h1 id="oap-installation-guide">OAP Installation Guide</h1>
-<p>This document introduces how to install OAP and its dependencies on your cluster nodes by <strong><em>Conda</em></strong>. 
+    <p>This document introduces how to install OAP and its dependencies on your cluster nodes by <strong><em>Conda</em></strong>. 
 Follow steps below on <strong><em>every node</em></strong> of your cluster to set right environment for each machine.</p>
 <h2 id="contents">Contents</h2>
 <ul>
