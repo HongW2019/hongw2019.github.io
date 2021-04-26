@@ -33,9 +33,8 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Building OAP", url: "#building-oap", children: [
-              {title: "Prerequisites", url: "#prerequisites" },
-              {title: "Building", url: "#building" },
+          {title: "OAP Developer Guide", url: "#oap-developer-guide", children: [
+              {title: "Building OAP", url: "#building-oap" },
           ]},
         ];
 
@@ -63,16 +62,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
     <h1><strong>OAP Developer Guide</strong></h1>
     <hr>
-    <p>This document contains the instructions &amp; scripts on installing necessary dependencies and building OAP modules. 
+    <h1 id="oap-developer-guide">OAP Developer Guide</h1>
+<p>This document contains the instructions &amp; scripts on installing necessary dependencies and building OAP modules. 
 You can get more detailed information from OAP each module below.</p>
 <ul>
-<li><a href="https://github.com/oap-project/sql-ds-cache/blob/v1.1.0-spark-3.0.0/docs/Developer-Guide.md">SQL Index and Data Source Cache</a></li>
-<li><a href="https://github.com/oap-project/pmem-common/tree/v1.1.0-spark-3.0.0">PMem Common</a></li>
-<li><a href="https://github.com/oap-project/pmem-spill/tree/v1.1.0-spark-3.0.0">PMem Spill</a></li>
-<li><a href="https://github.com/oap-project/pmem-shuffle/tree/v1.1.0-spark-3.0.0#5-install-dependencies-for-pmem-shuffle">PMem Shuffle</a></li>
-<li><a href="https://github.com/oap-project/remote-shuffle/tree/v1.1.0-spark-3.0.0">Remote Shuffle</a></li>
-<li><a href="https://github.com/oap-project/oap-mllib/tree/v1.1.0-spark-3.0.0">OAP MLlib</a></li>
-<li><a href="https://github.com/oap-project/native-sql-engine/tree/v1.1.0-spark-3.0.0">Native SQL Engine</a></li>
+<li><a href="https://github.com/oap-project/sql-ds-cache/blob/master/docs/Developer-Guide.md">SQL Index and Data Source Cache</a></li>
+<li><a href="https://github.com/oap-project/pmem-common">PMem Common</a></li>
+<li><a href="https://github.com/oap-project/pmem-spill">PMem Spill</a></li>
+<li><a href="https://github.com/oap-project/pmem-shuffle#5-install-dependencies-for-pmem-shuffle">PMem Shuffle</a></li>
+<li><a href="https://github.com/oap-project/remote-shuffle">Remote Shuffle</a></li>
+<li><a href="https://github.com/oap-project/oap-mllib">OAP MLlib</a></li>
+<li><a href="https://github.com/oap-project/native-sql-engine">Native SQL Engine</a></li>
 </ul>
 <h2 id="building-oap">Building OAP</h2>
 <h3 id="prerequisites">Prerequisites</h3>
