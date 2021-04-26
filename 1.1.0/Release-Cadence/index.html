@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>OAP Installation Guide - OAP</title>
+        <title>Release Cadence - OAP</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -46,8 +46,8 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">Overview</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">OAP Installation Guide</a>
+                            <li class="navitem">
+                                <a href="../OAP-Installation-Guide/" class="nav-link">OAP Installation Guide</a>
                             </li>
                             <li class="navitem">
                                 <a href="../OAP-Developer-Guide/" class="nav-link">OAP Developer Guide</a>
@@ -64,17 +64,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../OAP-Developer-Guide/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/oap-project/edit/master/docs/OAP-Installation-Guide.md" class="nav-link">Edit on Fork on GitHub </a>
+                                <a href="https://github.com/oap-project/edit/master/docs/Release-Cadence.md" class="nav-link">Edit on Fork on GitHub </a>
                             </li>
                     </ul>
                 </div>
@@ -94,12 +84,18 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#oap-installation-guide" class="nav-link">OAP Installation Guide</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#contents" class="nav-link">Contents</a>
+            <li class="nav-item" data-level="2"><a href="#oap-versions" class="nav-link">OAP Versions</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+            
+            <li class="nav-item" data-level="2"><a href="#release-cadence" class="nav-link">Release Cadence</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#maintenance-releases" class="nav-link">Maintenance Releases</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -107,63 +103,18 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="oap-installation-guide">OAP Installation Guide</h1>
-<p>This document introduces how to install OAP and its dependencies on your cluster nodes by <strong><em>Conda</em></strong>. 
-Follow steps below on <strong><em>every node</em></strong> of your cluster to set right environment for each machine.</p>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#installing-oap">Installing OAP</a></li>
-<li><a href="#configuration">Configuration</a></li>
-</ul>
-<h3 id="prerequisites">Prerequisites</h3>
-<ul>
-<li>
-<p><strong>OS Requirements</strong><br />
-We have tested OAP on Fedora 29 and CentOS 7.6 (kernel-4.18.16). We recommend you use <strong>Fedora 29 CentOS 7.6 or above</strong>. Besides, for <a href="https://github.com/memkind/memkind/tree/v1.10.1-rc2">Memkind</a> we recommend you use <strong>kernel above 3.10</strong>.</p>
-</li>
-<li>
-<p><strong>Conda Requirements</strong> <br />
-Install Conda on your cluster nodes with below commands and follow the prompts on the installer screens.:</p>
-</li>
-</ul>
-<pre><code class="bash">$ wget -c https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
-$ chmod +x Miniconda2-latest-Linux-x86_64.sh 
-$ bash Miniconda2-latest-Linux-x86_64.sh 
-</code></pre>
-
-<p>For changes to take effect, <strong><em>close and re-open</em></strong> your current shell. 
-To test your installation,  run the command <code>conda list</code> in your terminal window. A list of installed packages appears if it has been installed correctly.</p>
-<h3 id="installing-oap">Installing OAP</h3>
-<p>Create a Conda environment and install OAP Conda package.</p>
-<pre><code class="bash">$ conda create -n oapenv -y python=3.7
-$ conda activate oapenv
-$ conda install -c conda-forge -c intel -y oap=1.1.0
-</code></pre>
-
-<p>Once finished steps above, you have completed OAP dependencies installation and OAP building, and will find built OAP jars under <code>$HOME/miniconda2/envs/oapenv/oap_jars</code></p>
-<p>Dependencies below are required by OAP and all of them are included in OAP Conda package, they will be automatically installed in your cluster when you Conda install OAP. Ensure you have activated environment which you created in the previous steps.</p>
-<ul>
-<li><a href="https://github.com/Intel-bigdata/arrow">Arrow</a></li>
-<li><a href="http://arrow.apache.org/blog/2017/08/08/plasma-in-memory-object-store/">Plasma</a></li>
-<li><a href="https://anaconda.org/intel/memkind">Memkind</a></li>
-<li><a href="https://anaconda.org/intel/vmemcache">Vmemcache</a></li>
-<li><a href="https://anaconda.org/intel/hpnl">HPNL</a></li>
-<li><a href="https://github.com/pmem/pmdk">PMDK</a>  </li>
-<li><a href="https://software.intel.com/content/www/us/en/develop/tools/oneapi.html">OneAPI</a></li>
-</ul>
-<h4 id="extra-steps-for-shuffle-remote-pmem-extension">Extra Steps for Shuffle Remote PMem Extension</h4>
-<p>If you use one of OAP features -- <a href="https://github.com/oap-project/pmem-shuffle">PMmem Shuffle</a> with <strong>RDMA</strong>, you need to configure and validate RDMA, please refer to <a href="https://github.com/oap-project/pmem-shuffle#4-configure-and-validate-rdma">PMem Shuffle</a> for the details.</p>
-<h3 id="configuration">Configuration</h3>
-<p>Once finished steps above, make sure libraries installed by Conda can be linked by Spark, please add the following configuration settings to <code>$SPARK_HOME/conf/spark-defaults.conf</code>.</p>
-<pre><code>spark.executorEnv.LD_LIBRARY_PATH   $HOME/miniconda2/envs/oapenv/lib
-spark.executor.extraLibraryPath     $HOME/miniconda2/envs/oapenv/lib
-spark.driver.extraLibraryPath       $HOME/miniconda2/envs/oapenv/lib
-spark.executor.extraClassPath       $HOME/miniconda2/envs/oapenv/oap_jars/$OAP_FEATURE.jar
-spark.driver.extraClassPath         $HOME/miniconda2/envs/oapenv/oap_jars/$OAP_FEATURE.jar
-</code></pre>
-
-<p>Then you can follow the corresponding feature documents for more details to use them.</p></div>
+<p>Starting with OAP 1.1.0, the OAP project will follow the semantic versioning guidelines with a few deviations. These small differences account for OAP’s nature as a multi-module project.</p>
+<h2 id="oap-versions">OAP Versions</h2>
+<p>Each OAP release will be versioned: [MAJOR].[FEATURE].[MAINTENANCE]</p>
+<h2 id="release-cadence">Release Cadence</h2>
+<p>In general, major feature releases occur about every 4 months. Hence, OAP would generally be released about 4 months after 1.1.0. Maintenance releases happen as needed in between feature releases. Major releases do not happen according to a fixed schedule.</p>
+<h3 id="oap-12-release-window">OAP 1.2 Release Window</h3>
+<p>Date              Event
+July 23th  2021   Code freeze. Release branch cut.
+Mid August 2021   QA period. Focus on bug fixes, tests, stability and docs. Generally, no new features merged.
+August     2021   Release candidates (RC), etc. until final release passes</p>
+<h2 id="maintenance-releases">Maintenance Releases</h2>
+<p>Feature release branches will, generally, be maintained with bug fix releases for a period of several months.</p></div>
             </div>
         </div>
 
